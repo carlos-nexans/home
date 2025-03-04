@@ -4,7 +4,13 @@ const nextConfig: NextConfig = {
   redirects: async () => {
     return [
       {
-        source: "meet.carlosnexans.com",
+        source: "/",
+        has: [
+          {
+            type: "host",
+            value: "meet.carlosnexans.com",
+          },
+        ],
         destination: "https://calendly.com/nexanscarlos/30min",
         permanent: false,
       },
