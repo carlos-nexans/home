@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  redirects: async () => {
+    return [
+      {
+        source: "meet.carlosnexans.com",
+        destination: "https://calendly.com/nexanscarlos/30min",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
