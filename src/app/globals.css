@@ -213,28 +213,38 @@
       @apply text-scooter-400;
     }
 
-    pre:has(.hljs) {
+    pre:has(.hljs), pre:has(code) {
       padding: 1rem;
       max-height: 500px;
       overflow-y: auto;
+      overflow-x: scroll;
     }
 
     p {
       @apply text-lg my-4;
+      @apply leading-8;
+    }
+
+    h1 {
+      @apply text-4xl font-bold my-4;
+      @apply mt-4;
     }
 
     h2 {
       @apply text-2xl font-bold my-4;
+      @apply mt-8;
     }
 
     ol {
       @apply list-decimal pl-4;
       @apply text-lg;
+      @apply leading-8;
     }
 
     ul {
       @apply list-disc pl-4;
       @apply text-lg;
+      @apply leading-8;
     }
 
     blockquote {
