@@ -212,5 +212,35 @@
     a:hover {
       @apply text-scooter-400;
     }
+
+    pre:has(.hljs) {
+      padding: 1rem;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    p {
+      @apply text-lg my-4;
+    }
+
+    h2 {
+      @apply text-2xl font-bold my-4;
+    }
+
+    ol {
+      @apply list-decimal pl-4;
+      @apply text-lg;
+    }
+
+    ul {
+      @apply list-disc pl-4;
+      @apply text-lg;
+    }
+
+    blockquote {
+      @apply border-l-2 border-border pl-4 py-2 italic;
+      @apply text-lg;
+    }
+  
   }
 }

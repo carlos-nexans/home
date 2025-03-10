@@ -6,7 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/header";
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
-
+import "@/styles/highlight-js/github-dark.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
