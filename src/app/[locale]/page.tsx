@@ -4,6 +4,15 @@ import { notFound } from "next/navigation";
 
 import "./home.css";
 
+export const generateMetadata = async ({ params }: { params: { locale: string } }) => {
+  const { locale } = await params;
+  const metadata = (await import(`./${locale}.mdx`)).metadata;
+  return {
+    title: metadata.title,
+    description: metadata.description,
+  };
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

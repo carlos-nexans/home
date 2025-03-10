@@ -22,8 +22,8 @@ export function LanguageSwitcher() {
       <Link
         href={getLanguagePath("es")}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary",
-          currentLang === "es" ? "text-primary underline underline-offset-4" : "text-muted-foreground",
+          "transition-all duration-200 text-lg font-medium pb-1 border-b-1 border-scooter-400 hover:text-scooter-400",
+          currentLang === "es" ? "text-gray-900" : "text-muted-foreground",
         )}
       >
         Español
@@ -31,8 +31,8 @@ export function LanguageSwitcher() {
       <Link
         href={getLanguagePath("en")}
         className={cn(
-          "text-sm font-medium transition-colors hover:text-primary",
-          currentLang === "en" ? "text-primary underline underline-offset-4" : "text-muted-foreground",
+          "transition-all duration-200 text-lg font-medium pb-1 border-b-1 border-scooter-400 hover:text-scooter-400",
+          currentLang === "en" ? "text-gray-900" : "text-muted-foreground",
         )}
       >
         English

@@ -38,15 +38,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased markdown-content`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased px-6 lg:px-0`}
       >
         <div className="flex flex-col min-h-screen max-w-screen-md mx-auto">
-          <Header />
-          <main>
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
-          </main>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <main className="markdown-content">{children}</main>
+          </NextIntlClientProvider>
         </div>
       </body>
     </html>
