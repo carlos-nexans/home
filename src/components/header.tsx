@@ -20,13 +20,13 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 my-8">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-6 md:gap-10">
+    <header className="my-8">
+      <div className="container flex flex-col lg:flex-row items-center justify-between">
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
           <Link href={basePath || "/"} className="flex items-center space-x-2">
             <Image src="/brand/logo.png" alt="logo" width={24} height={24} />
           </Link>
-          <nav className="hidden gap-6 md:flex">
+          <nav className="gap-6 flex flex-row flex-center">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -42,9 +42,9 @@ export function Header() {
               </Link>
             ))}
           </nav>
-        </div>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </header>
