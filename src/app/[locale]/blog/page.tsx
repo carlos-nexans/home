@@ -32,22 +32,23 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   return (
     <div>
       <h1 className="text-[32px] font-bold">Artículos</h1>
-      <div className="flex flex-col space-y-2"></div>
+      <div className="flex flex-col space-y-4">
       {posts.map((post) => (
-        <div className="flex flex-col" key={post.slug}>
+        <div className="flex flex-col" key={post.metadata.slug}>
           <div className="flex flex-grow flex-wrap justify-between md:items-center">
             <Link href={`/${post.metadata.slug}`}><span className="font-bold m-0">{post.metadata.title}</span></Link>
             <span className="text-gray-500">{post.metadata.date}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {post.metadata.tags.map((tag: string) => (
-              <span key={tag} className="border rounded px-2 py-1 text-sm border-gray-400 border-b-blue-ribbon-600">
+              <span key={`${post.slug}-${tag}`} className="border rounded px-2 py-1 text-sm border-gray-400 border-b-blue-ribbon-600">
                 {tag}
               </span>
             ))}
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }

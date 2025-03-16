@@ -225,6 +225,11 @@
       @apply leading-8;
     }
 
+    ul, ol {
+      @apply text-lg my-4;
+      @apply leading-8;
+    }
+
     h1 {
       @apply text-4xl font-bold my-4;
       @apply mt-4;
@@ -251,6 +256,24 @@
       @apply border-l-2 border-border pl-4 py-2 italic;
       @apply text-lg;
     }
-  
+
+    table {
+      @apply border-collapse border border-border;
+      @apply text-lg;
+      @apply lg:min-w-[600px];
+    }
+
+    th, td {
+      @apply border border-border;
+      @apply p-2;
+    }
+
+    th {
+      @apply bg-muted;
+    }
+
+    .katex-html {
+      display: none;
+    }
   }
 }

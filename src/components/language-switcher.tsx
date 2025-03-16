@@ -11,7 +11,7 @@ export function LanguageSwitcher() {
         locale="es"
         href={"/"}
         className={cn(
-          "transition-all duration-200 text-lg font-medium pb-1 border-b-1 border-scooter-400 hover:text-scooter-400",
+          "transition-all duration-200 text-lg font-medium border-b-1 border-scooter-400 hover:text-scooter-400",
           locale === "es" ? "text-gray-900" : "text-muted-foreground",
         )}
       >
@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
         locale="en"
         href={"/"}
         className={cn(
-          "transition-all duration-200 text-lg font-medium pb-1 border-b-1 border-scooter-400 hover:text-scooter-400",
+          "transition-all duration-200 text-lg font-medium border-b-1 border-scooter-400 hover:text-scooter-400",
           locale === "en" ? "text-gray-900" : "text-muted-foreground",
         )}
       >

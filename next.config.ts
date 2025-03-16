@@ -6,26 +6,26 @@ import remarkFrontmatter from 'remark-frontmatter'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 import { getBlogPosts } from "@/content/utils";
+import remarkMath from 'remark-math'
 
 const withNextIntl = createNextIntl();
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter],
+    remarkPlugins: [remarkGfm, [remarkFrontmatter], remarkMath],
     rehypePlugins: [rehypeKatex, [rehypeHighlight, { lineOptions: { split: true } }]],
   },
 });
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+
   rewrites: async () => {
     const posts = await getBlogPosts();
     const postRewrites = posts.map((post) => ({
       source: `/${post.locale}/${post.metadata.slug}`,
       destination: `/${post.locale}/blog/${post.folder}`,
     }));
-
-    console.log(postRewrites);
 
     return postRewrites;
   },

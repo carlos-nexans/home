@@ -52,7 +52,7 @@ function getMDXData(dir: string) {
       locale,
       metadata: metadata as Metadata,
       slug,
-      //content,
+      content,
       folder,
     }
   })

@@ -1,15 +1,22 @@
 import { getBlogPosts } from "@/content/utils";
-import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-export const generateMetadata = async ({ params }: { params: Promise<{ locale: string, folder: string }> }) => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale: string; folder: string }>;
+}) => {
   const { locale, folder } = await params;
-  const metadata = (await import(`@/content/blog/${folder}/${locale}.mdx`)).metadata;
+  const posts = await getBlogPosts();
+  const post = posts.find(
+    (post) => post.folder === folder && post.locale === locale
+  );
+
   return {
-    title: metadata.title,
-    description: metadata.description,
-    canonical: `/${metadata.slug}`,
+    title: post?.metadata.title,
+    description: post?.metadata.description,
+    canonical: `/${post?.metadata.slug}`,
   };
 };
 
@@ -18,20 +25,33 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ locale: post.locale, folder: post.folder }));
 }
 
-export default async function Page({ params }: { params: Promise<{ locale: string, folder: string }> }) {
+const getContent = async (locale: string, folder: string) => {
+  try {
+    return (await import(`@/content/blog/${folder}/${locale}.mdx`)).default;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string; folder: string }>;
+}) {
   const { locale, folder } = await params;
   // Enable static rendering
   setRequestLocale(locale);
 
-  try {
-    const Content = (await import(`@/content/blog/${folder}/${locale}.mdx`)).default;
+  const Content = await getContent(locale, folder);
+
+  if (Content) {
     return (
-      <div className="markdown-content">
+      <div className="markdown-content pb-16">
         <Content />
       </div>
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
-    notFound();
   }
+
+  return notFound();
 }
