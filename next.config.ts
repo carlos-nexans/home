@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import remarkFrontmatter from 'remark-frontmatter'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
+import { getBlogPosts } from "@/content/utils";
 
 const withNextIntl = createNextIntl();
 const withMDX = createMDX({
@@ -17,6 +18,15 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  rewrites: async () => {
+    const posts = await getBlogPosts();
+    const postRewrites = posts.map((post) => ({
+      source: `/${post.metadata.slug}`,
+      destination: `/${post.locale}/blog/${post.folder}`,
+    }));
+
+    return [...postRewrites];
+  },
   redirects: async () => {
     return [
       {

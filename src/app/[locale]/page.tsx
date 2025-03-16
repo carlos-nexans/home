@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 
 import "./home.css";
 
-export const generateMetadata = async ({ params }: { params: { locale: string } }) => {
+export const generateMetadata = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
-  const metadata = (await import(`./${locale}.mdx`)).metadata;
+  const metadata = (await import(`@/content/home/${locale}.mdx`)).metadata;
   return {
     title: metadata.title,
     description: metadata.description,
@@ -17,15 +17,15 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   // Enable static rendering
   setRequestLocale(locale);
 
   try {
-    const Content = (await import(`./${locale}.mdx`)).default;
+    const Content = (await import(`@/content/home/${locale}.mdx`)).default;
     return (
-      <div className="home">
+      <div className="home markdown-content">
         <Content />
       </div>
     );

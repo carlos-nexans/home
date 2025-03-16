@@ -43,7 +43,7 @@ export default async function LocaleLayout({
         <div className="flex flex-col min-h-screen max-w-screen-md mx-auto">
           <NextIntlClientProvider messages={messages}>
             <Header />
-            <main className="markdown-content">{children}</main>
+            <main>{children}</main>
           </NextIntlClientProvider>
         </div>
       </body>
