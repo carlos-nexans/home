@@ -21,11 +21,13 @@ const nextConfig: NextConfig = {
   rewrites: async () => {
     const posts = await getBlogPosts();
     const postRewrites = posts.map((post) => ({
-      source: `/${post.metadata.slug}`,
+      source: `/${post.locale}/${post.metadata.slug}`,
       destination: `/${post.locale}/blog/${post.folder}`,
     }));
 
-    return [...postRewrites];
+    console.log(postRewrites);
+
+    return postRewrites;
   },
   redirects: async () => {
     return [
