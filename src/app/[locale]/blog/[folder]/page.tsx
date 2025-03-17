@@ -47,7 +47,7 @@ export default async function Page({
 
   if (Content) {
     return (
-      <div className="markdown-content pb-16">
+      <div className="markdown-content">
         <Content />
       </div>
     );

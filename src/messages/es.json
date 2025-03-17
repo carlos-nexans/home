@@ -2,5 +2,8 @@
     "header": {
         "home": "Inicio",
         "blog": "Blog"
+    }, 
+    "home": {
+        "latestPosts": "Últimos Artículos"
     }
 }

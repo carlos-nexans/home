@@ -14,6 +14,13 @@ type Metadata = {
   originalUri?: string
 }
 
+export type BlogPost = {
+  locale: string
+  metadata: Metadata
+  slug: string
+  content: string
+}
+
 async function parseFrontmatter(fileContent: string) {
   const file = await remark()
     .use(remarkParse)
@@ -58,7 +65,7 @@ function getMDXData(dir: string) {
   })
 }
 
-export async function getBlogPosts() {
+export async function getBlogPosts(): Promise<BlogPost[]> {
   const postsPath = path.join(process.cwd(), 'src', 'content', 'blog')
   return await Promise.all(getMDXData(postsPath))
 }

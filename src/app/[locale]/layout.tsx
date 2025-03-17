@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 import "@/styles/highlight-js/github-dark.css";
+import Footer from "@/components/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -40,10 +41,11 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased px-6 lg:px-0`}
       >
-        <div className="flex flex-col min-h-screen max-w-screen-md mx-auto">
+        <div className="flex flex-col min-h-screen max-w-screen-md mx-auto min-h-screen">
           <NextIntlClientProvider messages={messages}>
             <Header />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
+            <Footer />
           </NextIntlClientProvider>
         </div>
       </body>
