@@ -2,10 +2,9 @@ import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import "./home.css";
-import { getBlogPosts } from "@/content/utils";
-import Link from "next/link";
 import LatestPosts from "@/components/latest-posts";
+import { getBlogPosts } from "@/content/utils";
+import "./home.css";
 
 export const generateMetadata = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;

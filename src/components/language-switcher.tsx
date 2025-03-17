@@ -1,15 +1,16 @@
 "use client"
 import { cn } from "@/lib/utils"
 import { useLocale } from "next-intl"
-import {Link} from "@/i18n/navigation"
+import { Link, usePathname } from "@/i18n/navigation"
 
 export function LanguageSwitcher() {
   const locale = useLocale()
+  const pathname = usePathname()
   return (
     <div className="flex items-center space-x-2">
       <Link
         locale="es"
-        href={"/"}
+        href={'/'}
         className={cn(
           "transition-all duration-200 text-lg font-medium border-b-1 border-scooter-400 hover:text-scooter-400",
           locale === "es" ? "text-gray-900" : "text-muted-foreground",
@@ -19,7 +20,7 @@ export function LanguageSwitcher() {
       </Link>
       <Link
         locale="en"
-        href={"/"}
+        href={'/'}
         className={cn(
           "transition-all duration-200 text-lg font-medium border-b-1 border-scooter-400 hover:text-scooter-400",
           locale === "en" ? "text-gray-900" : "text-muted-foreground",

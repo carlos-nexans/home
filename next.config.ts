@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
       destination: `/${post.locale}/blog/${post.folder}`,
     }));
 
-    return postRewrites;
+    return [...postRewrites];
   },
   redirects: async () => {
     return [

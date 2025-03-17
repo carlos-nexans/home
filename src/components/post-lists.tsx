@@ -21,7 +21,7 @@ export default function PostList({ posts }: { posts: BlogPost[] }) {
   const locale = useLocale();
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-6">
       {posts.map((post) => (
         <div className="flex flex-col" key={post.metadata.slug}>
           <div className="flex flex-grow flex-wrap justify-between md:items-center">

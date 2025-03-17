@@ -1,22 +1,60 @@
 import { getBlogPosts } from "@/content/utils";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-
+import { Metadata } from "next";
+import { baseUrl } from "@/app/sitemap";
 export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ locale: string; folder: string }>;
-}) => {
+}): Promise<Metadata> => {
   const { locale, folder } = await params;
   const posts = await getBlogPosts();
   const post = posts.find(
     (post) => post.folder === folder && post.locale === locale
   );
 
+  const otherLocales = posts.filter(
+    (post) => post.folder === folder && post.locale !== locale
+  );
+
+  const alternates = otherLocales.reduce((acc, post) => {
+    acc[post.metadata.slug] = `/${post.metadata.slug}`;
+    return acc;
+  }, {} as Record<string, string>);
+
   return {
     title: post?.metadata.title,
     description: post?.metadata.description,
-    canonical: `/${post?.metadata.slug}`,
+    authors: [{ name: "Carlos Nexans" }],
+    creator: "Carlos Nexans",
+    publisher: "Carlos Nexans",
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `/${post?.metadata.slug}`,
+      languages: alternates,
+    },
+    openGraph: {
+      title: post?.metadata.title,
+      description: post?.metadata.description,
+      type: 'article',
+      publishedTime: post?.metadata.date,
+      url: `${baseUrl}/blog/${post?.metadata.slug}`,
+      images: [
+        {
+          url: `${baseUrl}/og?title=${post?.metadata.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post?.metadata.title,
+      description: post?.metadata.description,
+      images: [`${baseUrl}/og?title=${post?.metadata.title}`],
+    },
   };
 };
 

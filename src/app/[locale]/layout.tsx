@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { notFound, usePathname } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/header";
@@ -8,6 +8,8 @@ import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 import "@/styles/highlight-js/github-dark.css";
 import Footer from "@/components/footer";
+import { Metadata } from "next";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,6 +19,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default async function LocaleLayout({
   children,

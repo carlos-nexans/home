@@ -17,8 +17,8 @@ type Metadata = {
 export type BlogPost = {
   locale: string
   metadata: Metadata
-  slug: string
   content: string
+  folder: string
 }
 
 async function parseFrontmatter(fileContent: string) {
