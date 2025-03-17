@@ -2,6 +2,10 @@ import PostList from "@/components/post-lists";
 import { getBlogPosts } from "@/content/utils";
 import { routing } from "@/i18n/routing";
 
+export const dynamic = 'force-static'
+
+export const revalidate = false;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

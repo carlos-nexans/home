@@ -3,6 +3,11 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { baseUrl } from "@/app/sitemap";
+
+export const dynamic = 'force-static'
+
+export const revalidate = false;
+
 export const generateMetadata = async ({
   params,
 }: {

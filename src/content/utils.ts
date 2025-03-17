@@ -50,7 +50,9 @@ function getMDXData(dir: string) {
     })
   })
 
-  return mdxFiles.map(async (file: string) => {
+  return mdxFiles
+    .filter((file) => file.includes('.mdx'))
+    .map(async (file: string) => {
     const { metadata, content } = await readMDXFile(path.join(dir, file))
     const slug = path.basename(file, path.extname(file))
     const locale = file.split('.')[0].split('/')[1]
