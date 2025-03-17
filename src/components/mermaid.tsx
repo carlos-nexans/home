@@ -9,6 +9,9 @@ export default function Mermaid({ children }: { children: React.ReactNode }) {
       startOnLoad: true,
       securityLevel: "loose",
     });
+    
+    // Force mermaid to re-render diagrams
+    mermaid.run();
   }, []);
 
   return <>{children}</>;
