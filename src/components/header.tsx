@@ -3,9 +3,9 @@
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "../lib/utils";
+import { Link } from "@/i18n/navigation";
 
 export function Header() {
   const pathname = usePathname();
