@@ -1,3 +1,4 @@
+import Mermaid from "@/components/mermaid";
 import { routing } from "@/i18n/routing";
 import "@/styles/highlight-js/github-dark.css";
 import { NextIntlClientProvider } from "next-intl";
@@ -32,7 +33,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      {children}
+      <Mermaid>{children}</Mermaid>
     </NextIntlClientProvider>
   );
 }
