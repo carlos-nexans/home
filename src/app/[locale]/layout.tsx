@@ -8,6 +8,10 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-static";
+
+export const revalidate = false;
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
