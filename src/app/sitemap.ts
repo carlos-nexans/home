@@ -6,7 +6,7 @@ export default async function sitemap() {
   const posts = await getBlogPosts()
   
   const postUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
+    url: `${baseUrl}/blog/${post.metadata.slug}`,
     lastModified: post.metadata.date,
   }))
 
