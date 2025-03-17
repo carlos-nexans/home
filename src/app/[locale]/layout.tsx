@@ -12,6 +12,10 @@ export const dynamic = "force-static";
 
 export const revalidate = false;
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -56,7 +60,7 @@ export default async function LocaleLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased px-6 lg:px-0`}
       >
         <div className="flex flex-col min-h-screen max-w-screen-md mx-auto min-h-screen">
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider messages={messages} locale={locale}>
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

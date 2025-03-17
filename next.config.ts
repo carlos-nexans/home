@@ -22,10 +22,13 @@ const nextConfig: NextConfig = {
 
   rewrites: async () => {
     const posts = await getBlogPosts();
-    const postRewrites = posts.map((post) => ({
-      source: `/${post.locale}/${post.metadata.slug}`,
+    const postRewrites = posts.flatMap((post) => [{
+      source: `/es/${post.metadata.slug}`,
       destination: `/${post.locale}/blog/${post.folder}`,
-    }));
+    }, {
+      source: `/en/${post.metadata.slug}`,
+      destination: `/${post.locale}/blog/${post.folder}`,
+    }]);
 
     return [...postRewrites];
   },

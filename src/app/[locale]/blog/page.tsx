@@ -1,6 +1,7 @@
 import PostList from "@/components/post-lists";
 import { getBlogPosts } from "@/content/utils";
 import { routing } from "@/i18n/routing";
+import { setRequestLocale } from "next-intl/server";
 
 export const dynamic = 'force-static'
 
@@ -49,6 +50,8 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  // Enable static rendering
+  setRequestLocale(locale);
   const posts = (await getBlogPosts()).filter((post) => post.locale === locale);
   return (
     <div>
