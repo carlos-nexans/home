@@ -6,6 +6,10 @@ import LatestPosts from "@/components/latest-posts";
 import { getBlogPosts } from "@/content/utils";
 import "./home.css";
 
+export const dynamic = 'force-static'
+
+export const revalidate = false;
+
 export const generateMetadata = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
   const metadata = (await import(`@/content/home/${locale}.mdx`)).metadata;

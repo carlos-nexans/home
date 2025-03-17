@@ -1,7 +1,6 @@
 "use client";
 
 import { BlogPost } from "@/content/utils";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import PostList from "./post-lists";
 

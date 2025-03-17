@@ -1,12 +1,11 @@
 "use client";
 
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "../lib/utils";
-import Image from "next/image";
 
 export function Header() {
   const pathname = usePathname();

@@ -1,11 +1,10 @@
 "use client"
+import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { useLocale } from "next-intl"
-import { Link, usePathname } from "@/i18n/navigation"
 
 export function LanguageSwitcher() {
   const locale = useLocale()
-  const pathname = usePathname()
   return (
     <div className="flex items-center space-x-2">
       <Link
