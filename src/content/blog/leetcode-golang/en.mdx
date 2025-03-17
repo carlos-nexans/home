@@ -34,7 +34,7 @@ mylist = append(mylist, 5, 6)     // -> [1, 2, 3, 4, 5, 6]
 
 ## Sorting
 
-Sorting is the process of rearranging the data in an array, so it is stored in ascending or descending order. Many algorithms for sorting exist, but best complexity is O(nlogn).
+Sorting is the process of rearranging the data in an array, so it is stored in ascending or descending order. Many algorithms for sorting exist, but best complexity is $ O(nlogn) $.
 
 ```go
 // Built-in implementation of sorting
@@ -53,7 +53,7 @@ Most common sorting algorithm, it is the built-in implementation in many languag
 
 This technique uses divide and conquer to divide the problem into smaller subproblems by selecting a pivot in the array, and comparing the rest to the pivot.
 
-- O(nlogn) - complexity
+- $ O(nlogn) $ - complexity
 
 ```go
 func quickSort(arr []int) []int {
@@ -90,9 +90,9 @@ func quickSort(arr []int) []int {
 
 It is a recursive technique to sort an array, it is very common for parallel sorting because it can partition the data amongst many processes.
 
-This algorithm uses a divide and conquer technique and it works very well because merging already sorted arrays is an O(n) operation.
+This algorithm uses a divide and conquer technique and it works very well because merging already sorted arrays is an $ O(n) $ operation.
 
-- O(nlogn) - complexity
+- $ O(nlogn) $ - complexity
 
 ```go
 func merge(arr1, arr2 []int) []int {
@@ -125,11 +125,11 @@ func mergeSort(arr []int) []int {
 
 ### Binary Search
 
-This algorithm improves lookup in lists that are sorted. Generally, looking for a value in a list has O(n) complexity but if the list is already sorted, this technique can do it in O(logn) which is way better.
+This algorithm improves lookup in lists that are sorted. Generally, looking for a value in a list has $ O(n) $ complexity but if the list is already sorted, this technique can do it in $ O(logn) $ which is way better.
 
 This technique uses a divide and conquer approach to reduce the space of lookup by skipping irrelevant values.
 
-- O(logn) - complexity
+- $ O(logn) $ - complexity
 
 If the item is not found, the item should be in the position annotated with left.
 
@@ -237,8 +237,8 @@ for curr != nil {
 
 These are data structures focused on accessing one end. Stack is a Last-in First-Out type collection, whereas a Queue is a First-in First-out collection. They can be easily implemented, and Go provides the necessary data structures.
 
-- O(1) - add or remove from the ends
-- O(n) - lookup and indexed access
+- $ O(1) $ - add or remove from the ends
+- $ O(n) $ - lookup and indexed access
 
 ```go
 // Queue
@@ -264,8 +264,8 @@ stack = stack[:len(stack)-1] // element = 2
 
 Hashmap is a data structure that stores key/value pairs. The values can be efficiently read using the key. It works by hashing the key to store values in a table.
 
-- O(1) - read and write if key is provided
-- O(n) - if key is not provided
+- $ O(1) $ - read and write if key is provided
+- $ O(n) $ - if key is not provided
 
 ```go
 hashmap := make(map[string]string)
@@ -292,8 +292,8 @@ for key := range hashmap {
 
 It’s a special case of hashmap where the values are empty structs. This data structure is used to represent sets and generally comes with efficient set algebra operations.
 
-- O(1) - read and write a particular value
-- O(n) - most of the set operations
+- $ O(1) $ - read and write a particular value
+- $ O(n) $ - most of the set operations
 
 ```go
 // Initialize sets
@@ -334,8 +334,8 @@ Priority Queue, also known as PQ, is a data structure whose objective is to give
 
 This data structure is commonly implemented with heaps, a special type of binary tree that ensures the highest priority element is efficiently accessible after add or delete operations.
 
-- O(1) - read highest priority element
-- O(logn) - insert or delete an element
+- $ O(1) $ - read highest priority element
+- $ O(logn) $ - insert or delete an element
 
 Go's standard library provides a `container/heap` package that can be used to implement a priority queue.
 
@@ -413,8 +413,8 @@ item = heap.Pop(pq).(*Item)
 
 Data structure that efficiently stores bit values in an array; the bits can represent boolean values, and the array itself can represent sets. This data structure is less flexible than a set but can be very memory and time efficient.
 
-- O(1) - write and read a binary value
-- O(1) - algebra of sets
+- $ O(1) $ - write and read a binary value
+- $ O(1) $ - algebra of sets
 
 ```go
 // Can be initialized as integer too.
@@ -494,10 +494,10 @@ Also known as DFS, it is an algorithmic technique to traverse a graph or tree vi
 
 When traversing a tree, the process of the value can occur before visiting the rest of the path or after; this is called pre-order traversal or post-order traversal.
 
-- O(n) - time complexity
-- O(h) - memory complexity, where h is the height of the tree
-    - O(n) - worst-case memory complexity if the tree is skewed
-    - O(logn) - memory complexity if the tree is balanced
+- $ O(n) $ - time complexity
+- $ O(h) $ - memory complexity, where h is the height of the tree
+    - $ O(n) $ - worst-case memory complexity if the tree is skewed
+    - $ O(logn) $ - memory complexity if the tree is balanced
 
 ```go
 // Iterative implementation of DFS
@@ -544,7 +544,7 @@ DFS(root)
 
 Also called BFS, it is a technique to traverse a graph or tree in levels. It can be useful to find the shortest path from the root but can be less memory efficient for large paths.
 
-- O(n) - time complexity
+- $ O(n) $ - time complexity
 
 ```go
 // Iterative implementation of BFS

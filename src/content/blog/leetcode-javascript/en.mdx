@@ -12,9 +12,9 @@ tags: ["algorithms"]
 
 Data structure that arranges data sequentially in contiguous memory.
 
-- O(1) indexed read
-- O(n) random insert/delete
-- O(n) lookup
+- $ O(1) $ indexed read
+- $ O(n) $ random insert/delete
+- $ O(n) $ lookup
 
 ```javascript
 let mylist = [1, 2, 3];
@@ -34,7 +34,7 @@ mylist.push(5, 6); // -> [1, 2, 3, 4, 5, 6]
 
 ## Sorting
 
-Sorting is the process of rearranging the data in an array, so it is stored in ascending or descending order. Many algorithms for sorting exist, but best complexity is O(nlogn).
+Sorting is the process of rearranging the data in an array, so it is stored in ascending or descending order. Many algorithms for sorting exist, but best complexity is $ O(nlogn) $.
 
 ```javascript
 // Built-in implementation of sorting
@@ -49,7 +49,7 @@ Most common sorting algorithm, it is the built-in implementation in many languag
 
 This technique uses divide and conquer to divide the problem into smaller subproblems by selecting a pivot in the array, and comparing the rest to the pivot.
 
-- O(nlogn) - complexity
+- $ O(nlogn) $ - complexity
 
 ```javascript
 function quickSort(arr) {
@@ -83,9 +83,9 @@ function quickSort(arr) {
 
 It is a recursive technique to sort an array, it is very common for parallel sorting because it can partition the data amongst many processes.
 
-This algorithm uses a divide and conquer technique and it works very well because merging already sorted arrays is an O(n) operation.
+This algorithm uses a divide and conquer technique and it works very well because merging already sorted arrays is an $ O(n) $ operation.
 
-- O(nlogn) - complexity
+- $ O(nlogn) $ - complexity
 
 ```javascript
 function merge(arr1, arr2) {
@@ -120,11 +120,11 @@ function mergeSort(arr) {
 
 ### Binary Search
 
-This algorithm improves lookup in lists that are sorted. Generally, looking for a value in a list has O(n) complexity but if the list is already sorted, this technique can do it in O(logn) which is way better.
+This algorithm improves lookup in lists that are sorted. Generally, looking for a value in a list has $ O(n) $ complexity but if the list is already sorted, this technique can do it in $ O(logn) $ which is way better.
 
 This technique uses a divide and conquer approach to reduce the space of lookup by skipping irrelevant values.
 
-- O(logn) - complexity
+- $ O(logn) $ - complexity
 
 If the item is not found, the item should be in the position annotated with left.
 
@@ -223,8 +223,8 @@ while (curr !== null) {
 
 These are data structures focused in accessing one end. Stack is a Last-in First-Out type collection, whereas a Queue is a First-in First-out collection. They can be easily implemented but JavaScript already has an implementation.
 
-- O(1) - add or remove from the ends
-- O(n) - lookup and indexed access
+- $ O(1) $ - add or remove from the ends
+- $ O(n) $ - lookup and indexed access
 
 ```javascript
 // Queue
@@ -246,8 +246,8 @@ stack.pop(); // -> 2
 
 Hashmap is a data structure that stores key/value pairs. The values can be efficiently read using the key. It works by hashing the key to store values in a table.
 
-- O(1) - read and write if key is provided
-- O(n) - if key is not provided
+- $ O(1) $ - read and write if key is provided
+- $ O(n) $ - if key is not provided
 
 ```javascript
 const hashmap = {};
@@ -274,8 +274,8 @@ for (const key in hashmap) {
 
 It’s a special case of hashmap in which the values are of type booleans. This data structure is used to represent sets and generally comes with efficient set algebra operations.
 
-- O(1) - read and write a particular value
-- O(n) - most of the set operations
+- $ O(1) $ - read and write a particular value
+- $ O(n) $ - most of the set operations
 
 ```javascript
 const A = new Set([1, 2, 3]);
@@ -316,8 +316,8 @@ Priority Queue also known as PQ, is a data structure whose objective is to give 
 
 This data structure is commonly implemented with heaps, a special type of binary tree that ensures the highest priority element is efficiently accessible after add or delete operations.
 
-- O(1) - read highest priority element
-- O(logn) - insert or delete an element
+- $ O(1) $ - read highest priority element
+- $ O(logn) $ - insert or delete an element
 
 JavaScript does not have a built-in Priority Queue in its standard library, but you can implement one using a custom class or use third-party libraries.
 
@@ -352,8 +352,8 @@ pq.pop(); // -> [1, 'Charly']
 
 Data structure that efficiently stores bit values in an array, the bits can represent boolean values and the array itself can represent sets. This data structure is less flexible than a set but can be very memory and time efficient.
 
-- O(1) - write and read a binary value
-- O(1) - algebra of sets
+- $ O(1) $ - write and read a binary value
+- $ O(1) $ - algebra of sets
 
 ```javascript
 // Can be initialized as integer too.
@@ -437,10 +437,10 @@ Also known as DFS is an algorithm technique to traverse a graph or tree visiting
 
 When traversing a tree, the process of the value can occur before visiting the rest of the path or after, this is called pre-order traversal or post-order traversal.
 
-- O(n) - time complexity
-- O(h) - memory complexity, where h is the height of the tree
-    - O(n) - worst-case memory complexity, if the tree is skewed
-    - O(logn) - memory complexity if the tree is balanced
+- $ O(n) $ - time complexity
+- $ O(h) $ - memory complexity, where h is the height of the tree
+    - $ O(n) $ - worst-case memory complexity, if the tree is skewed
+    - $ O(logn) $ - memory complexity if the tree is balanced
 
 ```javascript
 // Iterative implementation of DFS
@@ -483,7 +483,7 @@ DFS(root);
 
 Also called BFS is a technique to traverse a graph or tree in levels. It can be useful to find the shortest path from the root, but can also be less memory efficient for large paths.
 
-- O(n) - time complexity
+- $ O(n) $ - time complexity
 
 ```javascript
 // Iterative implementation of BFS

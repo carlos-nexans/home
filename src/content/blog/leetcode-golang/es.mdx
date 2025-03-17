@@ -34,7 +34,7 @@ mylist = append(mylist, 5, 6)     // -> [1, 2, 3, 4, 5, 6]
 
 ## Ordenamiento
 
-El ordenamiento es el proceso de reorganizar los datos en un array, de modo que se almacenen en orden ascendente o descendente. Existen muchos algoritmos para ordenar, pero la mejor complejidad es O(nlogn).
+El ordenamiento es el proceso de reorganizar los datos en un array, de modo que se almacenen en orden ascendente o descendente. Existen muchos algoritmos para ordenar, pero la mejor complejidad es $ O(nlogn) $.
 
 ```go
 // Implementación incorporada de ordenamiento
@@ -53,7 +53,7 @@ El algoritmo de ordenamiento más común, es la implementación incorporada en m
 
 Esta técnica utiliza divide y vencerás para dividir el problema en subproblemas más pequeños seleccionando un pivote en el array y comparando el resto con el pivote.
 
-- O(nlogn) - complejidad
+- $ O(nlogn) $ - complejidad
 
 ```go
 func quickSort(arr []int) []int {
@@ -90,9 +90,9 @@ func quickSort(arr []int) []int {
 
 Es una técnica recursiva para ordenar un array, es muy común para el ordenamiento paralelo porque puede particionar los datos entre muchos procesos.
 
-Este algoritmo utiliza una técnica de divide y vencerás y funciona muy bien porque fusionar arrays ya ordenados es una operación O(n).
+Este algoritmo utiliza una técnica de divide y vencerás y funciona muy bien porque fusionar arrays ya ordenados es una operación $ O(n) $.
 
-- O(nlogn) - complejidad
+- $ O(nlogn) $ - complejidad
 
 ```go
 func merge(arr1, arr2 []int) []int {
@@ -125,11 +125,11 @@ func mergeSort(arr []int) []int {
 
 ### Búsqueda Binaria
 
-Este algoritmo mejora la búsqueda en listas que están ordenadas. Generalmente, buscar un valor en una lista tiene complejidad O(n), pero si la lista ya está ordenada, esta técnica puede hacerlo en O(logn), lo cual es mucho mejor.
+Este algoritmo mejora la búsqueda en listas que están ordenadas. Generalmente, buscar un valor en una lista tiene complejidad $ O(n) $, pero si la lista ya está ordenada, esta técnica puede hacerlo en $ O(logn) $, lo cual es mucho mejor.
 
 Esta técnica utiliza un enfoque de divide y vencerás para reducir el espacio de búsqueda saltando valores irrelevantes.
 
-- O(logn) - complejidad
+- $ O(logn) $ - complejidad
 
 Si el elemento no se encuentra, el elemento debería estar en la posición anotada con left.
 
@@ -237,8 +237,8 @@ for curr != nil {
 
 Estas son estructuras de datos enfocadas en acceder a un extremo. Una Pila es una colección de tipo Último en Entrar Primero en Salir (LIFO), mientras que una Cola es una colección de tipo Primero en Entrar Primero en Salir (FIFO). Pueden implementarse fácilmente, y Go proporciona las estructuras de datos necesarias.
 
-- O(1) - agregar o eliminar de los extremos
-- O(n) - búsqueda y acceso indexado
+- $ O(1) $ - agregar o eliminar de los extremos
+- $ O(n) $ - búsqueda y acceso indexado
 
 ```go
 // Cola
@@ -264,8 +264,8 @@ stack = stack[:len(stack)-1] // element = 2
 
 Un Hashmap es una estructura de datos que almacena pares clave/valor. Los valores pueden ser leídos eficientemente usando la clave. Funciona haciendo hash de la clave para almacenar valores en una tabla.
 
-- O(1) - lectura y escritura si se proporciona la clave
-- O(n) - si no se proporciona la clave
+- $ O(1) $ - lectura y escritura si se proporciona la clave
+- $ O(n) $ - si no se proporciona la clave
 
 ```go
 hashmap := make(map[string]string)
@@ -292,8 +292,8 @@ for key := range hashmap {
 
 Es un caso especial de hashmap donde los valores son structs vacíos. Esta estructura de datos se utiliza para representar conjuntos y generalmente viene con operaciones de álgebra de conjuntos eficientes.
 
-- O(1) - leer y escribir un valor particular
-- O(n) - la mayoría de las operaciones de conjunto
+- $ O(1) $ - leer y escribir un valor particular
+- $ O(n) $ - la mayoría de las operaciones de conjunto
 
 ```go
 // Inicializar conjuntos
@@ -334,8 +334,8 @@ La Cola de Prioridad, también conocida como PQ, es una estructura de datos cuyo
 
 Esta estructura de datos se implementa comúnmente con montículos (heaps), un tipo especial de árbol binario que asegura que el elemento de mayor prioridad sea accesible eficientemente después de operaciones de agregar o eliminar.
 
-- O(1) - leer el elemento de mayor prioridad
-- O(logn) - insertar o eliminar un elemento
+- $ O(1) $ - leer el elemento de mayor prioridad
+- $ O(logn) $ - insertar o eliminar un elemento
 
 La biblioteca estándar de Go proporciona un paquete `container/heap` que puede usarse para implementar una cola de prioridad.
 
@@ -413,8 +413,8 @@ item = heap.Pop(pq).(*Item)
 
 Estructura de datos que almacena eficientemente valores de bits en un array; los bits pueden representar valores booleanos, y el array en sí puede representar conjuntos. Esta estructura de datos es menos flexible que un conjunto pero puede ser muy eficiente en memoria y tiempo.
 
-- O(1) - escribir y leer un valor binario
-- O(1) - álgebra de conjuntos
+- $ O(1) $ - escribir y leer un valor binario
+- $ O(1) $ - álgebra de conjuntos
 
 ```go
 // También puede inicializarse como entero.
@@ -494,10 +494,10 @@ También conocida como DFS, es una técnica algorítmica para recorrer un grafo 
 
 Al recorrer un árbol, el procesamiento del valor puede ocurrir antes de visitar el resto del camino o después; esto se llama recorrido preorden o postorden.
 
-- O(n) - complejidad temporal
-- O(h) - complejidad de memoria, donde h es la altura del árbol
-    - O(n) - complejidad de memoria en el peor de los casos si el árbol está sesgado
-    - O(logn) - complejidad de memoria si el árbol está equilibrado
+- $ O(n) $ - complejidad temporal
+- $ O(h) $ - complejidad de memoria, donde h es la altura del árbol
+    - $ O(n) $ - complejidad de memoria en el peor de los casos si el árbol está sesgado
+    - $ O(logn) $ - complejidad de memoria si el árbol está equilibrado
 
 ```go
 // Implementación iterativa de DFS
@@ -544,7 +544,7 @@ DFS(root)
 
 También llamada BFS, es una técnica para recorrer un grafo o árbol en niveles. Puede ser útil para encontrar el camino más corto desde la raíz pero puede ser menos eficiente en memoria para caminos largos.
 
-- O(n) - complejidad temporal
+- $ O(n) $ - complejidad temporal
 
 ```go
 // Implementación iterativa de BFS
