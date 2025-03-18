@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { baseUrl } from "@/app/sitemap";
+import { getCanonicalUrl } from "@/i18n/utils";
 
 export const dynamic = 'force-static'
 
@@ -24,7 +25,7 @@ export const generateMetadata = async ({
   );
 
   const alternates = otherLocales.reduce((acc, post) => {
-    acc[post.metadata.slug] = `/${post.metadata.slug}`;
+    acc[post.metadata.slug] = getCanonicalUrl({ locale: post.locale, pathname: `/${post.metadata.slug}` });
     return acc;
   }, {} as Record<string, string>);
 
@@ -39,7 +40,7 @@ export const generateMetadata = async ({
       follow: true,
     },
     alternates: {
-      canonical: `/${post?.metadata.slug}`,
+      canonical: getCanonicalUrl({ locale, pathname: `/${post?.metadata.slug}` }),
       languages: alternates,
     },
     openGraph: {

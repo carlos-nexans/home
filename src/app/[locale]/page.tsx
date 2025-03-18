@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import LatestPosts from "@/components/latest-posts";
 import { getBlogPosts } from "@/content/utils";
 import "./home.css";
+import { getCanonicalUrl } from "@/i18n/utils";
 
 export const dynamic = 'force-static'
 
@@ -16,6 +17,13 @@ export const generateMetadata = async ({ params }: { params: Promise<{ locale: s
   return {
     title: metadata.title,
     description: metadata.description,
+    alternates: {
+      canonical: getCanonicalUrl({ locale, pathname: "/" }),
+      languages: {
+        "en": getCanonicalUrl({ locale: "en", pathname: "/" }),
+        "es": getCanonicalUrl({ locale: "es", pathname: "/" }),
+      },
+    },
   };
 };
 

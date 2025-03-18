@@ -1,6 +1,7 @@
 import PostList from "@/components/post-lists";
 import { getBlogPosts } from "@/content/utils";
 import { routing } from "@/i18n/routing";
+import { getCanonicalUrl } from "@/i18n/utils";
 import { setRequestLocale } from "next-intl/server";
 
 export const dynamic = 'force-static'
@@ -30,10 +31,10 @@ export const generateMetadata = async ({
   const { locale } = await params;
   return {
     alternates: {
-      canonical: "/",
+      canonical: getCanonicalUrl({ locale, pathname: "/blog" }),
       languages: {
-        es: "/es/blog",
-        en: "/en/blog",
+        es: getCanonicalUrl({ locale: "es", pathname: "/blog" }),
+        en: getCanonicalUrl({ locale: "en", pathname: "/blog" }),
       },
     },
     robots: {
