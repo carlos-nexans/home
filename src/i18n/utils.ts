@@ -1,9 +1,10 @@
 import { routing } from "./routing";
+import { baseUrl } from "@/app/sitemap";
 
 export const getCanonicalUrl = ({ locale, pathname }: { locale: string; pathname: string }) => {
   if (locale === routing.defaultLocale) {
-    return pathname;
+    return `${baseUrl}${pathname}`;
   }
   
-  return `/${locale}${pathname}`;
+  return `${baseUrl}/${locale}${pathname}`;
 };
