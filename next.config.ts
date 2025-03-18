@@ -1,12 +1,27 @@
+import { getBlogPosts } from "@/content/utils";
+import createMDX from '@next/mdx';
 import type { NextConfig } from "next";
 import createNextIntl from "next-intl/plugin";
-import createMDX from '@next/mdx';
-import remarkGfm from 'remark-gfm'
-import remarkFrontmatter from 'remark-frontmatter'
-import rehypeKatex from 'rehype-katex'
-import rehypeHighlight from 'rehype-highlight'
-import { getBlogPosts } from "@/content/utils";
-import remarkMath from 'remark-math'
+import rehypeHighlight from 'rehype-highlight';
+import rehypeKatex from 'rehype-katex';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+
+async function generateRedirects() {
+  const posts = await getBlogPosts();
+  const prefixes = ['articles', 'articulos', 'tutoriales', 'tutorials'];
+  
+  const redirects = posts.flatMap(post => {
+    return prefixes.map(prefix => ({
+      source: `/${prefix}/${post.metadata.slug}`,
+      destination: `/${post.metadata.slug}`,
+      permanent: true
+    }));
+  });
+
+  return redirects;
+}
 
 const withNextIntl = createNextIntl();
 const withMDX = createMDX({
@@ -33,6 +48,7 @@ const nextConfig: NextConfig = {
     return [...postRewrites];
   },
   redirects: async () => {
+    const oldWebsiteRedirects = await generateRedirects();
     return [
       {
         source: "/",
@@ -45,6 +61,7 @@ const nextConfig: NextConfig = {
         destination: "https://calendly.com/nexanscarlos/30min",
         permanent: false,
       },
+      ...oldWebsiteRedirects,
     ];
   },
 };
