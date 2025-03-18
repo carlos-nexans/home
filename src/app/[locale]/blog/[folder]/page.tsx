@@ -29,6 +29,8 @@ export const generateMetadata = async ({
     return acc;
   }, {} as Record<string, string>);
 
+  const canonical = getCanonicalUrl({ locale, pathname: `/${post?.metadata.slug}` });
+
   return {
     title: post?.metadata.title,
     description: post?.metadata.description,
@@ -40,7 +42,7 @@ export const generateMetadata = async ({
       follow: true,
     },
     alternates: {
-      canonical: getCanonicalUrl({ locale, pathname: `/${post?.metadata.slug}` }),
+      canonical: canonical,
       languages: alternates,
     },
     openGraph: {
@@ -48,7 +50,7 @@ export const generateMetadata = async ({
       description: post?.metadata.description,
       type: 'article',
       publishedTime: post?.metadata.date,
-      url: `${baseUrl}/blog/${post?.metadata.slug}`,
+      url: canonical,
       images: [
         {
           url: `${baseUrl}/og?title=${post?.metadata.title}`,
