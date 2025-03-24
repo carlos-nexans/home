@@ -11,12 +11,11 @@ function SocialFooter({ links }: { links: {[key: string]: string} }) {
     </div>
   );
 }
-
 const socialLinks = {
-  twitter: 'https://x.com/techycarlos',
-  github: 'https://github.com/cdgn-coding',
-  linkedin: 'https://www.linkedin.com/in/cdgn-cv/',
-  youtube: 'https://www.youtube.com/@CarlosNexans',
+  twitter: 'https://x.carlosnexans.com',
+  github: 'https://github.carlosnexans.com',
+  linkedin: 'https://linkedin.carlosnexans.com',
+  youtube: 'https://youtube.carlosnexans.com',
 };
 
 export default function Footer() {
