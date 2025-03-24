@@ -9,10 +9,31 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-async function generateRedirects() {
+function generateSocialRedirects() {
+  const subdomainMapping = [
+    { subdomain: "meet", destination: "https://calendly.com/nexanscarlos/30min" },
+    { subdomain: "github", destination: "https://github.com/carlos-nexans" },
+    { subdomain: "linkedin", destination: "https://www.linkedin.com/in/cdgn-cv/" },
+    { subdomain: "x", destination: "https://x.com/techycarlos" },
+    { subdomain: "youtube", destination: "https://www.youtube.com/@CarlosNexans" },
+  ]
+  return subdomainMapping.map(({ subdomain, destination }) => ({
+    source: "/",
+    has: [
+      {
+        type: "host",
+        value: `${subdomain}.carlosnexans.com`,
+      },
+    ],
+    destination: destination,
+    permanent: false,
+  }))
+}
+
+async function generateOldWebsiteRedirects() {
   const posts = await getBlogPosts();
   const prefixes = ['articles', 'articulos', 'tutoriales', 'tutorials'];
-  
+
   const redirects = posts.flatMap(post => {
     const withoutLocale = prefixes.map(prefix => ({
       source: `/${prefix}/${post.metadata.slug}`,
@@ -79,20 +100,11 @@ const nextConfig: NextConfig = {
     return [...postRewrites];
   },
   redirects: async () => {
-    const oldWebsiteRedirects = await generateRedirects();
+    const oldWebsiteRedirects = await generateOldWebsiteRedirects();
+    const socialRedirects = generateSocialRedirects();
     return [
-      {
-        source: "/",
-        has: [
-          {
-            type: "host",
-            value: "meet.carlosnexans.com",
-          },
-        ],
-        destination: "https://calendly.com/nexanscarlos/30min",
-        permanent: false,
-      },
       ...oldWebsiteRedirects,
+      ...socialRedirects,
     ];
   },
 };
