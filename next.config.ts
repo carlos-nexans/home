@@ -1,4 +1,5 @@
 import { getBlogPosts } from "@/content/utils";
+import { locales } from "@/i18n/routing";
 import createMDX from '@next/mdx';
 import type { NextConfig } from "next";
 import createNextIntl from "next-intl/plugin";
@@ -13,11 +14,19 @@ async function generateRedirects() {
   const prefixes = ['articles', 'articulos', 'tutoriales', 'tutorials'];
   
   const redirects = posts.flatMap(post => {
-    return prefixes.map(prefix => ({
+    const withoutLocale = prefixes.map(prefix => ({
       source: `/${prefix}/${post.metadata.slug}`,
       destination: `/${post.metadata.slug}`,
       permanent: true
     }));
+
+    const withLocale = locales.flatMap(locale => withoutLocale.map(redirect => ({
+      source: `/${locale}/${redirect.source}`,
+      destination: `/${locale}/${redirect.destination}`,
+      permanent: true
+    })));
+
+    return [...withLocale, ...withLocale];
   });
 
   const listingRedirects = [
