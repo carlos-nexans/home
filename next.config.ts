@@ -20,7 +20,29 @@ async function generateRedirects() {
     }));
   });
 
-  return redirects;
+  const listingRedirects = [
+    {
+      source: '/es/articulos',
+      destination: '/es/blog',
+      permanent: true
+    },
+    {
+      source: '/en/articles',
+      destination: '/en/blog',
+      permanent: true
+    },
+    {
+      source: '/es/tutoriales',
+      destination: '/es/blog',
+      permanent: true
+    },
+    {
+      source: '/en/tutorials',
+      destination: '/en/blog',
+      permanent: true
+    }
+  ]
+  return [...redirects, ...listingRedirects];
 }
 
 const withNextIntl = createNextIntl();
