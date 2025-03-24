@@ -275,5 +275,15 @@
     .katex-html {
       display: none;
     }
+
+    .youtube-embed {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .youtube-embed>iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
+    }
   }
 }
