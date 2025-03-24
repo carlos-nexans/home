@@ -21,8 +21,8 @@ async function generateRedirects() {
     }));
 
     const withLocale = locales.flatMap(locale => withoutLocale.map(redirect => ({
-      source: `/${locale}/${redirect.source}`,
-      destination: `/${locale}/${redirect.destination}`,
+      source: `/${locale}${redirect.source}`,
+      destination: `/${locale}${redirect.destination}`,
       permanent: true
     })));
 
