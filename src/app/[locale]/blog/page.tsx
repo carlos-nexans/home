@@ -56,7 +56,7 @@ export default async function Page({
   const posts = (await getBlogPosts()).filter((post) => post.locale === locale);
   return (
     <div>
-      <h1 className="text-[32px] font-bold my-4">Artículos</h1>
+      <h1 className="text-4xl font-bold my-4">Artículos</h1>
       <div className="flex flex-col space-y-4">
         <PostList posts={posts} />
       </div>
